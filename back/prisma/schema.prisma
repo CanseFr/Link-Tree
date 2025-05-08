@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model BranchNetwork {
+  id           Int        @id @default(autoincrement())
+  name_network String     @unique
+  url_network  String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  path         PathProfil @relation(fields: [pathId], references: [id])
+  pathId       Int
+}
+
+// AJOUTER :
+//           - Url Photo Profil
+
+model PathProfil {
+  id        Int             @id @default(autoincrement())
+  url_owner String          @unique
+  bio       String?
+  bgColor   String?
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  branchs   BranchNetwork[]
+  user      User            @relation(fields: [userId], references: [id])
+  userId    Int             @unique
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  firstname String
+  lastname  String
+  role      String
+  email     String      @unique
+  password  String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  path      PathProfil?
+}

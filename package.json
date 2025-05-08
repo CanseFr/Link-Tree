@@ -1,0 +1,21 @@
+{
+  "name": "link-tree",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "workspaces": [
+    "front",
+    "back"
+  ],
+  "scripts": {
+    "back": "npm run start:dev --workspace back",
+    "front": "npm run dev --workspace front",
+    "dev": "concurrently -p name -n \"back,front\" -c \"magenta,cyan\" \"npm run back\" \"npm run front\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
