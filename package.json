@@ -11,6 +11,7 @@
     "back"
   ],
   "scripts": {
+    "db:init": "pnpm --filter back exec sh -c \"prisma migrate dev --name 'init' && prisma db seed\"",
     "back": "npm run start:dev --workspace back",
     "front": "npm run dev --workspace front",
     "dev": "concurrently -p name -n \"back,front\" -c \"magenta,cyan\" \"npm run back\" \"npm run front\""
