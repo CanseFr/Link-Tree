@@ -4,11 +4,15 @@ import {jwtDecode, JwtPayload} from "jwt-decode";
 export interface DecodedToken extends JwtPayload {
   userId: number | undefined;
   role: string | undefined;
+  firstname: string | undefined;
+  pictureUrl: string | undefined;
 }
 
 const initialState: DecodedToken = {
   userId: undefined,
   role: undefined,
+  firstname: undefined,
+  pictureUrl: undefined,
 }
 
 const authenticationSlice = createSlice({
@@ -25,13 +29,25 @@ const authenticationSlice = createSlice({
         console.log(err);
       }
     },
+    setUserLightInfoOnLogin(state, action) {
+      try {
+        state.firstname = action.payload.firstname;
+        state.pictureUrl = action.payload.pictureUrl;
+        // localStorage.setItem("firstname", action.payload.firstname)
+        // localStorage.setItem("pictureUrl", action.payload.pictureUrl)
+      } catch (err) {
+        console.log(err);
+      }
+    },
     logout(state) {
       localStorage.clear()
       state.role = undefined;
       state.userId = undefined;
+      state.firstname = undefined;
+      state.pictureUrl = undefined;
     }
   },
 })
 
-export const {setRoleOnLogin, logout} = authenticationSlice.actions;
+export const {setRoleOnLogin, logout, setUserLightInfoOnLogin} = authenticationSlice.actions;
 export default authenticationSlice.reducer;

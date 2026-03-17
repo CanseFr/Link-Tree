@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import LoginIcon from '@mui/icons-material/Login';
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {setRoleOnLogin} from "../../features/authentication/auth-slice.ts";
+import {setRoleOnLogin, setUserLightInfoOnLogin} from "../../features/authentication/auth-slice.ts";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import {login} from "./request.ts";
 import {LoginObject} from "./type.ts";
@@ -19,6 +19,7 @@ export const Login = () => {
     login(loginObject!)
       .then((data) => {
         dispatch(setRoleOnLogin(data.accessToken))
+        dispatch(setUserLightInfoOnLogin(data.lightInfo))
         data.accessToken && nav("/");
       })
       .catch((error) => {
