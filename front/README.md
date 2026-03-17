@@ -1,31 +1,97 @@
-# React + TypeScript + Vite
+# ⚛️ Link-Tree-Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend application for **Link-Three**, built with **React** and **Vite**.
 
-Currently, two official plugins are available:
+This application allows users to manage and display their personal links through a simple and responsive interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# 📦 Description
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The front-end of the **Link-Three** project provides the user interface for interacting with the backend API.
 
-- Configure the top-level `parserOptions` property like this:
+Main technologies used:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+* **React**
+* **Vite**
+* **JavaScript / TypeScript**
+* **npm**
+
+---
+
+# ⚙️ Installation
+
+Clone the repository and move into the project directory:
+
+```bash
+cd front
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# Link-Tree-Front
+Check if any dependencies require funding or updates:
+
+```bash
+npm fund
+npm update
+```
+
+Install the project dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# 🚀 Running the Application
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🏗️ Build the Application
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+---
+
+# 🧪 Linting (optional)
+
+If linting is configured in the project:
+
+```bash
+npm run lint
+```
+
+---
+
+# 🔗 Related Project
+
+Backend API:
+
+➡️ **Link-Tree-Back**
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.

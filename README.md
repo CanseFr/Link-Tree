@@ -1,111 +1,128 @@
 # 🌳 LinkTree Clone — Monorepo React + NestJS
 
-> **Un “Link-in-bio” open-source, full-stack TypeScript, réuni dans un seul dépôt.**  
-> Front : React + Vite. Back : NestJS. Gestion des workspaces avec pnpm (ou npm ≥ 7).
+> **Un “Link-in-bio” open-source full-stack TypeScript, réuni dans un seul dépôt.**
+> Frontend : **React + Vite** · Backend : **NestJS**
+
+Ce repository contient **les deux applications du projet** :
+
+* un **frontend React**
+* un **backend NestJS**
+
+Chaque application possède **son propre README avec les instructions d'installation et de configuration**.
+
+👉 Merci de vous référer aux README présents dans chaque sous-dossier :
+
+* `front/README.md`
+* `back/README.md`
 
 ---
 
-## ✨ Fonctionnalités
+# ✨ Fonctionnalités
 
-| Front (React) | Back (NestJS) |
-|---------------|---------------|
-| ⚡ Vue publique profil / micro‑landing page | 🗄️ API REST + Swagger |
-| 🎨 Éditeur drag‑and‑drop des liens | 🔐 Auth JWT + refresh |
-| 📈 Compteur de clics temps‑réel | 📊 Endpoints analytics |
-| 🌗 Thèmes clair/sombre | ⚙️ Validation DTO (class‑validator) |
-| 📱 Responsive 100 % | 📦 Prisma ORM (PostgreSQL par défaut) |
-
----
-
-## 🏗️ Stack technique
-
-- **Monorepo** : pnpm workspaces · TypeScript partout
-- **Front** : React 18 · Vite 5 · Zustand / TanStack Query · TailwindCSS
-- **Back** : NestJS 10 · Prisma · class‑validator / class‑transformer
-- **Tests** : Vitest (front) · Jest (back)
-- **Dev tooling** : eslint + prettier · Husky + lint‑staged · concurrently
+| Front (React)                              | Back (NestJS)          |
+| ------------------------------------------ | ---------------------- |
+| ⚡ Vue publique profil / micro-landing page | 🗄️ API REST           |
+| 🎨 Gestion des liens                       | 🔐 Authentification    |
+| 📈 Compteur de clics                       | 📊 Endpoints analytics |
+| 🌗 Thèmes clair/sombre                     | ⚙️ Validation DTO      |
+| 📱 Responsive                              | 📦 Prisma ORM          |
 
 ---
 
-## 🗂️ Arborescence
+# 🏗️ Stack technique
+
+* **Monorepo** : Node.js workspaces
+
+* **Frontend** :
+
+    * React
+    * Vite
+    * JavaScript / TypeScript
+
+* **Backend** :
+
+    * NestJS
+    * Prisma
+    * MySQL
+
+---
+
+# 🗂️ Structure du projet
 
 ```
 .
-├─ front/            # React + Vite
+├─ front/            # Application React (Vite)
 │  ├─ src/
-│  └─ vite.config.ts
-├─ back/             # NestJS
+│  └─ README.md
+│
+├─ back/             # API NestJS
 │  ├─ src/
-│  └─ prisma/
-├─ .env.example
+│  ├─ prisma/
+│  └─ README.md
+│
 ├─ package.json      # scripts racine
+└─ README.md
 ```
 
 ---
 
-## 🚀 Prise en main
+# 🚀 Getting Started
 
-### 1. Prérequis
-
-- **Node ≥ 18**
-- **pnpm ≥ 9** (ou npm ≥ 7 / yarn ≥ 1.22)
-- MySql local (ou changez la connexion dans `.env`)
-
-### 2. Cloner + installer
+Clone the repository:
 
 ```bash
 git clone https://github.com/votre-org/link-tree-clone.git
 cd link-tree-clone
-npm install       
 ```
 
-### 3. Variables d’environnement
+Installez les dépendances :
 
 ```bash
-cp .env.example .env
-# ➜ remplissez MYSQL_URL
+npm install
 ```
-
-### 4. Démarrage dev (front + back)
-
-```bash
-npm run db:init        # init db and seed 
-npm run dev            # lance Nest à :3000 et Vite à :5173
-```
-
-### 5. Accès
-
-- **Frontend** : http://localhost:5173
-- **API**      : http://localhost:3000
-- **Swagger**  : http://localhost:3000/api
 
 ---
 
-## 📜 Scripts utiles
+## ⚠️ Configuration
 
-| Commande racine       | Action |
-|-----------------------|--------|
-| \`npm run dev\`       | Exécute \`back\` (\`nest start --watch\`) **et** \`front\` (\`vite\`) via concurrently |
-| \`npm lint\`          | ESLint sur tout le repo |
-| \`npm prisma:migrate\` | Migration Prisma |
+La configuration **du frontend et du backend est décrite dans leurs README respectifs** :
 
-*Remarque :* chaque dossier conserve ses propres scripts (\`front/package.json\`, \`back/package.json\`).
+* 📄 `front/README.md`
+* 📄 `back/README.md`
+
+Ils expliquent notamment :
+
+* l'installation
+* les variables d'environnement
+* le lancement en mode développement
+* la base de données
+* les tests
 
 ---
 
-## 🤝 Contribuer
+# 📜 Scripts
+
+| Commande      | Description                           |
+| ------------- | ------------------------------------- |
+| `npm install` | installe les dépendances du projet    |
+| `npm run dev` | lance le projet en mode développement |
+
+---
+
+# 🤝 Contribuer
 
 1. Forkez le repo
-2. \`git checkout -b feat/ma-fonction\`
-3. Commitez (Convention Commit)
+2. Créez une branche
+
+```bash
+git checkout -b feat/ma-feature
+```
+
+3. Committez vos changements
 4. Ouvrez une Pull Request 🚀
 
 ---
 
-## 📄 Licence
+# 📄 Licence
 
-[MIT](LICENSE)
-
----
-
-> *Made with ♥ & TypeScript.*
+MIT License
