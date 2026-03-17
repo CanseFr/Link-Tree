@@ -32,6 +32,7 @@ export class AuthService {
 
     return {
       accessToken: this.jwtService.sign({ userId: user.id, role: user.role }),
+      lightInfo: { firstname: user.firstname, pictureUrl: user.pictureUrl },
     };
   }
 
