@@ -22,66 +22,119 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# 🌳 Link-Tree-Back
 
-## Installation
+Backend API for the **Link-Three** application built with **NestJS**, **Prisma**, and **MySQL**.
+
+---
+
+# 📦 Description
+
+This project provides the backend API for a **Link-Tree-like application** allowing users to manage and display multiple links from a single profile.
+
+The API is built with:
+
+* **NestJS**
+* **Prisma ORM**
+* **MySQL**
+
+---
+
+# ⚙️ Installation
+
+Clone the repository and install dependencies.
 
 ```bash
-$ npm install
+cd back
+npm install
 ```
 
-## Running the app
+Create the environment file:
+
+```bash
+touch .env
+```
+
+Add the following configuration to `.env`:
+
+```env
+DATABASE_URL="mysql://user:password@localhost:3306/link-three"
+```
+
+---
+
+# 🗄️ Database Setup
+
+Apply migrations to create the database schema + auto seed
+
+```bash
+npx prisma migrate dev
+```
+
+---
+
+# 🚀 Running the Application
+
+Start the application in different modes:
 
 ```bash
 # development
-$ npm run start
+npm run start
 
-# watch mode
-$ npm run start:dev
+# watch mode (recommended for development)
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 
+---
 
-## Prisma
+# 🧬 Prisma
+
+Useful Prisma commands:
 
 ```bash
-# Save the migration, Execute the migration & Generate Prisma Client
-npx prisma migrate dev --name "init"
+# apply migrations
+npx prisma migrate dev
 
-
-# Execute seeding with the following command:
+# seed the database
 npx prisma db seed
-
 ```
 
-## Test
+---
+
+# 🧪 Tests
+
+Run the project tests:
 
 ```bash
 # unit tests
-$ npm run test
+npm run test
 
 # e2e tests
-$ npm run test:e2e
+npm run test:e2e
 
 # test coverage
-$ npm run test:cov
+npm run test:cov
 ```
 
-## Support
+---
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# ❤️ Support
 
-## Stay in touch
+NestJS is an MIT-licensed open-source project supported by a great community.
+If you'd like to contribute or support the project, you can read more here:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+[https://docs.nestjs.com/support](https://docs.nestjs.com/support)
 
-## License
+---
 
-Nest is [MIT licensed](LICENSE).
-# Link-Tree-Back
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for more details.
+
