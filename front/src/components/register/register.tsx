@@ -5,6 +5,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import React, {useState} from "react";
 import {RegisterObject} from "./type";
+import {register} from "./request.ts";
 
 export const Register = () => {
     const nav = useNavigate();
@@ -29,14 +30,14 @@ export const Register = () => {
             };
 
     const handleRegister = () => {
-        console.log(registerObject);
-
-        // register(registerObject)
-        //   .then(() => nav("/"))
-        //   .catch((error) => {
-        //     console.log("Alert Register");
-        //     console.error(error);
-        //   });
+        // console.log(registerObject);
+        //
+        register(registerObject)
+          .then(() => nav("/"))
+          .catch((error) => {
+            console.log("Alert Register");
+            console.error(error);
+          });
     };
 
     return (

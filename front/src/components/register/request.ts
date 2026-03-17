@@ -1,11 +1,22 @@
-import {RegisterObject} from "./type.ts";
-import {genericFetchWithBody} from "../../common/request/request.ts";
+import axios from "axios";
+import { RegisterObject } from "./type";
 
-export const register = (registerObject: RegisterObject) => genericFetchWithBody<RegisterObject>("/auth/register", 'POST', registerObject)
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error("Error request on register");
+export const register = async (registerObject: RegisterObject) => {
+    const formData = new FormData();
+
+    formData.append("firstname", registerObject.firstname!);
+    formData.append("lastname", registerObject.lastname!);
+    formData.append("email", registerObject.email!);
+    formData.append("password", registerObject.password!);
+
+    if (registerObject.avatar) {
+        formData.append("avatar", registerObject.avatar);
     }
-  })
+
+    const response = await axios.post(
+        "http://localhost:3000/auth/register",
+        formData
+    );
+
+    return response.data;
+};
