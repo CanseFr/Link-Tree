@@ -1,5 +1,5 @@
-import {AdminDashboard} from "./admin-dashboard/admin-dashboard.tsx";
+import {Outlet} from "react-router-dom";
 
 export const AdminHome = () => {
-  return(<AdminDashboard/>)
+    return (<><Outlet/></>)
 }

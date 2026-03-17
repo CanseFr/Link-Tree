@@ -14,38 +14,48 @@ import {MainDashboard} from "./components/dashboard/user-dashboard/main-dashboar
 import {ProtectedAdminRoute, ProtectedIdentifiedRoute} from "./features/protected-routes/protect-routes.tsx";
 import {Modification} from "./components/dashboard/modification/modification.tsx";
 import {AdminUserDashboard} from "./components/admin/admin-user/admin-user-dashboard.tsx";
+import {AdminDashboard} from "./components/admin/admin-dashboard/admin-dashboard.tsx";
 
 const App = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    if (token) {
-      try {
-        dispatch(setRoleOnLogin(token))
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  }, []);
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (token) {
+            try {
+                dispatch(setRoleOnLogin(token))
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    }, []);
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AppBar/>}>
-          <Route index element={<Home/>}/>
-          <Route path="admin" element={<ProtectedAdminRoute><AdminHome/></ProtectedAdminRoute>}/>
-          <Route path="admin/user" element={<ProtectedAdminRoute><AdminUserDashboard/></ProtectedAdminRoute>}/>
-          <Route path="dashboard" element={<ProtectedIdentifiedRoute><MainDashboard/></ProtectedIdentifiedRoute>}/>
-          <Route path="dashboard/modification" element={<ProtectedIdentifiedRoute><Modification/></ProtectedIdentifiedRoute>}/>
-        </Route>
-        <Route path="register" element={<Register/>}/>
-        <Route path="login" element={<Login/>}/>
-        <Route path="linktree"><Route path=":url_owner" element={<LinkTreePage/>}/></Route>
-        <Route path="*" element={<PageNotFoundPage/>}/>
-      </Routes>
-    </BrowserRouter>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<AppBar/>}>
+                    <Route index element={<Home/>}/>
+
+                    <Route path="admin" element={<AdminHome/>}>
+                        <Route index element={<ProtectedAdminRoute><AdminDashboard/></ProtectedAdminRoute>}/>
+                        <Route path="user" element={<ProtectedAdminRoute><AdminUserDashboard/></ProtectedAdminRoute>}/>
+                    </Route>
+
+                    <Route path="dashboard">
+                        <Route index element={<ProtectedIdentifiedRoute><MainDashboard/></ProtectedIdentifiedRoute>}/>
+                        <Route path="modification" element={<ProtectedIdentifiedRoute><Modification/></ProtectedIdentifiedRoute>}/>
+                    </Route>
+
+                </Route>
+                <Route path="linktree">
+                    <Route path=":url_owner" element={<LinkTreePage/>}/>
+                </Route>
+                <Route path="register" element={<Register/>}/>
+                <Route path="login" element={<Login/>}/>
+                <Route path="*" element={<PageNotFoundPage/>}/>
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App
