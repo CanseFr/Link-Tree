@@ -9,12 +9,14 @@ import { AuthEntity } from './entities/auth.entity';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { roundsOfHashing } from '../users/users.service';
+import { MediaService } from '../media/media.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private prisma: PrismaService,
     private jwtService: JwtService,
+    private mediaService: MediaService,
   ) {}
 
   async login(email: string, password: string): Promise<AuthEntity> {
@@ -36,15 +38,25 @@ export class AuthService {
     };
   }
 
-  async register(createUserDto: CreateUserDto) {
+  async register(createUserDto: CreateUserDto, avatar: Express.Multer.File) {
     createUserDto.password = await bcrypt.hash(
       createUserDto.password,
       roundsOfHashing,
     );
     createUserDto.role = 'USER';
 
+    let pictureUrl: string | undefined;
+
+    if (avatar) {
+      const resCloud = await this.mediaService.uploadImage(avatar);
+      pictureUrl = resCloud.secure_url;
+    }
+
     return this.prisma.user.create({
-      data: createUserDto,
+      data: {
+        ...createUserDto,
+        pictureUrl,
+      },
     });
   }
 

@@ -25,4 +25,7 @@ export class CreateUserDto {
   @MinLength(6)
   @ApiProperty()
   password: string;
+
+  @ApiProperty()
+  avatar: Express.Multer.File;
 }
