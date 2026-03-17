@@ -19,13 +19,14 @@ Chaque application possède **son propre README avec les instructions d'installa
 
 # ✨ Fonctionnalités
 
-| Front (React)                              | Back (NestJS)          |
-| ------------------------------------------ | ---------------------- |
-| ⚡ Vue publique profil / micro-landing page | 🗄️ API REST           |
-| 🎨 Gestion des liens                       | 🔐 Authentification    |
-| 📈 Compteur de clics                       | 📊 Endpoints analytics |
-| 🌗 Thèmes clair/sombre                     | ⚙️ Validation DTO      |
-| 📱 Responsive                              | 📦 Prisma ORM          |
+| Front (React)                             | Back (NestJS)           |
+| ----------------------------------------- |-------------------------|
+| ⚡ Vue publique profil / micro-landing page | 🗄️ API REST            |
+| 🎨 Gestion des liens                      | 🔐 Authentification     |
+| 📈 Compteur de clics                      | 📊 Endpoints analytics  |
+| 🌗 Thèmes clair/sombre                    | ⚙️ Validation DTO       |
+| 📱 Responsive                             | 📦 Prisma ORM           |
+|                               | 📸 Stockage image cloud |
 
 ---
 
