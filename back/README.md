@@ -39,6 +39,7 @@ The API is built with:
 * **NestJS**
 * **Prisma ORM**
 * **MySQL**
+* **Cloudinary**
 
 ---
 
@@ -71,6 +72,27 @@ Apply migrations to create the database schema + auto seed
 
 ```bash
 npx prisma migrate dev
+```
+
+# 📸 Cloudinary Setup
+
+1. Create a free account on Cloudinary:  
+   https://console.cloudinary.com/
+
+2. In your **Cloudinary Dashboard**, go to **Product Environment Credentials**.
+
+3. Copy the following values:
+- `Cloud name`
+- `API Key`
+- `API Secret`
+
+4. Add them to your `.env` file, alongside your database configuration:
+```bash
+DATABASE_URL="mysql://user:password@localhost:3306/link-three"
+
+CLOUDINARY_CLOUD_NAME=xxx
+CLOUDINARY_API_KEY=xxx
+CLOUDINARY_API_SECRET=xxx
 ```
 
 ---
