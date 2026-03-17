@@ -22,6 +22,9 @@ export class UserEntity implements User {
   role: string;
 
   @ApiProperty()
+  pictureUrl: string;
+
+  @ApiProperty()
   updatedAt: Date;
 
   @Exclude()

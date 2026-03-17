@@ -22,6 +22,7 @@ async function main() {
       role: 'ADMIN',
       email: 'admin@admin.admin',
       password: password_admin_1,
+      // pictureUrl: 'https://res.cloudinary.com/dhkjvxjgo/image/upload/v1773755861/avatars/wnt9zvqsxdeavwslenep.png',
       path: {
         create: {
           url_owner: '/urluser1',
