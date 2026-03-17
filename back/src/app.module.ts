@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { BranchNetworkModule } from './branch-network/branch-network.module';
 import { PathProfilModule } from './path-profil/path-profil.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PathProfilModule } from './path-profil/path-profil.module';
     AuthModule,
     BranchNetworkModule,
     PathProfilModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
