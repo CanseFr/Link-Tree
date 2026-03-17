@@ -3,4 +3,5 @@ export interface RegisterObject {
   lastname?: string;
   email?: string;
   password?: string;
+  avatar?: File;
 }
