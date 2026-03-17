@@ -36,14 +36,15 @@ Chaque application possède **son propre README avec les instructions d'installa
 * **Frontend** :
 
     * React
-    * Vite
-    * JavaScript / TypeScript
+    * Vite 
+    * TypeScript
 
 * **Backend** :
 
     * NestJS
     * Prisma
     * MySQL
+    * Cloudinary
 
 ---
 
@@ -52,13 +53,17 @@ Chaque application possède **son propre README avec les instructions d'installa
 ```
 .
 ├─ front/            # Application React (Vite)
+│  ├─ doc/
 │  ├─ src/
 │  └─ README.md
 │
 ├─ back/             # API NestJS
+│  ├─ doc/
 │  ├─ src/
 │  ├─ prisma/
 │  └─ README.md
+│
+├─ doc/             # Main documentation
 │
 ├─ package.json      # scripts racine
 └─ README.md
