@@ -54,17 +54,15 @@ Chaque application possède **son propre README avec les instructions d'installa
 ```
 .
 ├─ front/            # Application React (Vite)
-│  ├─ doc/
 │  ├─ src/
 │  └─ README.md
 │
 ├─ back/             # API NestJS
-│  ├─ doc/
 │  ├─ src/
 │  ├─ prisma/
 │  └─ README.md
 │
-├─ doc/             # Main documentation
+├─ doc/             # Main doc
 │
 ├─ package.json      # scripts racine
 └─ README.md
