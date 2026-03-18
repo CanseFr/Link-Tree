@@ -135,11 +135,6 @@ export const Home = () => {
                       backdropFilter: "blur(8px)",
                       border: "1px solid rgba(255,255,255,0.08)",
                       boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-                    //   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    //   "&:hover": {
-                    //     transform: "translateY(-8px)",
-                    //     boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
-                    //   },
                     }}
                 >
                   <CardMedia

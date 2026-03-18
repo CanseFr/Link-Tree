@@ -30,7 +30,7 @@ export const Register = () => {
     };
 
     return (
-        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2, py: 6,}}>
+        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2, py: 6}}>
             <Card elevation={0} sx={{
                 maxWidth: 520,
                 borderRadius: 4,

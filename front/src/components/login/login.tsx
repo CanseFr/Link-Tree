@@ -1,4 +1,4 @@
-import {Avatar, Box, Button, Card, CardContent, Divider, Stack, TextField, Typography,} from "@mui/material";
+import {Alert, Avatar, Box, Button, Card, CardContent, Divider, Stack, TextField, Typography,} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -11,6 +11,7 @@ import {initLoginObject} from "./const.ts";
 
 export const Login = () => {
     const [loginObject, setLoginObject] = useState<LoginObject>(initLoginObject);
+    const [alert, setAlert] = useState(false);
 
     const nav = useNavigate();
     const dispatch = useDispatch();
@@ -21,7 +22,9 @@ export const Login = () => {
                 setLoginObject((prev) => ({...prev, [field]: e.target.value}));
             };
 
+
     const handleLogin = () => {
+        setAlert(false)
         login(loginObject)
             .then((data) => {
                 dispatch(setRoleOnLogin(data.accessToken));
@@ -31,11 +34,12 @@ export const Login = () => {
             .catch((error) => {
                 console.log("Alert login");
                 console.error(error);
+                setAlert(true);
             });
     };
 
     return (
-        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2}}>
+        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2,py: 6}}>
             <Card
                 sx={{
                     width: "100%",
@@ -45,6 +49,7 @@ export const Login = () => {
                     border: "1px solid rgba(0,0,0,0.06)",
                 }}
             >
+                {alert &&  <Alert color="error">Un probleme est apparu lors de la connection</Alert>}
                 <CardContent sx={{p: 4}}>
                     <Stack spacing={3}>
                         <Stack alignItems="center" spacing={1.5}>
@@ -89,6 +94,8 @@ export const Login = () => {
                                 variant="contained"
                                 size="large"
                                 onClick={handleLogin}
+                                disabled={!loginObject.email || !loginObject.password}
+
                                 sx={{
                                     bgcolor: "black",
                                     color: "white",
