@@ -1,42 +1,24 @@
-import {
-    Avatar,
-    Box,
-    Button,
-    Card,
-    CardContent,
-    Divider,
-    Stack,
-    TextField,
-    Typography,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {Avatar, Box, Button, Card, CardContent, Divider, Stack, TextField, Typography,} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import {
-    setRoleOnLogin,
-    setUserLightInfoOnLogin,
-} from "../../features/authentication/auth-slice.ts";
-import { login } from "./request.ts";
-import { LoginObject } from "./type.ts";
+import {ChangeEvent, useState} from "react";
+import {useDispatch} from "react-redux";
+import {setRoleOnLogin, setUserLightInfoOnLogin} from "../../features/authentication/auth-slice.ts";
+import {login} from "./request.ts";
+import {LoginObject} from "./type.ts";
+import {initLoginObject} from "./const.ts";
 
 export const Login = () => {
-    const [loginObject, setLoginObject] = useState<LoginObject>({
-        email: "",
-        password: "",
-    });
+    const [loginObject, setLoginObject] = useState<LoginObject>(initLoginObject);
 
     const nav = useNavigate();
     const dispatch = useDispatch();
 
     const handleChange =
         (field: keyof LoginObject) =>
-            (e: React.ChangeEvent<HTMLInputElement>) => {
-                setLoginObject((prev) => ({
-                    ...prev,
-                    [field]: e.target.value,
-                }));
+            (e: ChangeEvent<HTMLInputElement>) => {
+                setLoginObject((prev) => ({...prev, [field]: e.target.value}));
             };
 
     const handleLogin = () => {
@@ -53,14 +35,7 @@ export const Login = () => {
     };
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                px: 2,
-            }}
-        >
+        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2}}>
             <Card
                 sx={{
                     width: "100%",
@@ -70,17 +45,11 @@ export const Login = () => {
                     border: "1px solid rgba(0,0,0,0.06)",
                 }}
             >
-                <CardContent sx={{ p: 4 }}>
+                <CardContent sx={{p: 4}}>
                     <Stack spacing={3}>
                         <Stack alignItems="center" spacing={1.5}>
-                            <Avatar
-                                sx={{
-                                    bgcolor: "black",
-                                    width: 64,
-                                    height: 64,
-                                }}
-                            >
-                                <LoginIcon fontSize="medium" />
+                            <Avatar sx={{bgcolor: "black", width: 64, height: 64}}>
+                                <LoginIcon fontSize="medium"/>
                             </Avatar>
 
                             <Box textAlign="center">
@@ -93,7 +62,7 @@ export const Login = () => {
                             </Box>
                         </Stack>
 
-                        <Divider />
+                        <Divider/>
 
                         <Stack spacing={2}>
                             <TextField
@@ -153,7 +122,7 @@ export const Login = () => {
                             <Button
                                 variant="text"
                                 size="small"
-                                startIcon={<KeyboardBackspaceIcon />}
+                                startIcon={<KeyboardBackspaceIcon/>}
                                 onClick={() => nav("/")}
                                 sx={{
                                     textTransform: "none",

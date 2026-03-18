@@ -1,5 +1,5 @@
-import axios from "axios";
 import { RegisterObject } from "./type";
+import {genericFetchWithBody} from "../../common/request/request.ts";
 
 export const register = async (registerObject: RegisterObject) => {
     const formData = new FormData();
@@ -13,10 +13,5 @@ export const register = async (registerObject: RegisterObject) => {
         formData.append("avatar", registerObject.avatar);
     }
 
-    const response = await axios.post(
-        "http://localhost:3000/auth/register",
-        formData
-    );
-
-    return response.data;
+    return await genericFetchWithBody("/auth/register","POST", formData)
 };

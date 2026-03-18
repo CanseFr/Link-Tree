@@ -3,73 +3,45 @@ import {Avatar, Box, Button, Card, CardContent, Divider, Grid, Stack, TextField,
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
-import React, {useState} from "react";
+import {ChangeEvent, useState} from "react";
 import {RegisterObject} from "./type";
 import {register} from "./request.ts";
+import {initRegisterObject} from "./const.ts";
 
 export const Register = () => {
     const nav = useNavigate();
 
-    const [registerObject, setRegisterObject] = useState<RegisterObject>({
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        avatar: undefined,
-    });
+    const [registerObject, setRegisterObject] = useState<RegisterObject>(initRegisterObject);
 
     const handleChange =
         (field: keyof RegisterObject) =>
-            (e: React.ChangeEvent<HTMLInputElement>) => {
+            (e: ChangeEvent<HTMLInputElement>) => {
                 const value = field === "avatar" ? e.target.files?.[0] : e.target.value;
-
-                setRegisterObject((prev) => ({
-                    ...prev,
-                    [field]: value,
-                }));
+                setRegisterObject((prev) => ({...prev, [field]: value,}));
             };
 
     const handleRegister = () => {
-        // console.log(registerObject);
-        //
         register(registerObject)
-          .then(() => nav("/"))
-          .catch((error) => {
-            console.log("Alert Register");
-            console.error(error);
-          });
+            .then(() => nav("/"))
+            .catch((error) => {
+                console.log("Alert Register");
+                console.error(error);
+            });
     };
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                px: 2,
-                py: 6,
-            }}
-        >
-            <Card
-                elevation={0}
-                sx={{
-                    maxWidth: 520,
-                    borderRadius: 4,
-                    boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
-                    border: "1px solid rgba(0,0,0,0.06)",
-                    backdropFilter: "blur(8px)",
-                }}
-            >
+        <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", px: 2, py: 6,}}>
+            <Card elevation={0} sx={{
+                maxWidth: 520,
+                borderRadius: 4,
+                boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+                border: "1px solid rgba(0,0,0,0.06)",
+                backdropFilter: "blur(8px)",
+            }}>
                 <CardContent sx={{p: 4}}>
                     <Stack spacing={3}>
                         <Stack alignItems="center" spacing={1.5}>
-                            <Avatar
-                                sx={{
-                                    bgcolor: "black",
-                                    width: 64,
-                                    height: 64,
-                                }}
-                            >
+                            <Avatar sx={{bgcolor: "black", width: 64, height: 64,}}>
                                 <HowToRegIcon fontSize="medium"/>
                             </Avatar>
 
@@ -87,45 +59,23 @@ export const Register = () => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <TextField
-                                    fullWidth
-                                    label="Prénom"
-                                    variant="outlined"
-                                    value={registerObject.firstname}
-                                    onChange={handleChange("firstname")}
-                                />
+                                <TextField fullWidth label="Prénom" variant="outlined" value={registerObject.firstname}
+                                           onChange={handleChange("firstname")}/>
                             </Grid>
 
                             <Grid item xs={12} sm={6}>
-                                <TextField
-                                    fullWidth
-                                    label="Nom"
-                                    variant="outlined"
-                                    value={registerObject.lastname}
-                                    onChange={handleChange("lastname")}
-                                />
+                                <TextField fullWidth label="Nom" variant="outlined" value={registerObject.lastname}
+                                           onChange={handleChange("lastname")}/>
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Adresse email"
-                                    type="email"
-                                    variant="outlined"
-                                    value={registerObject.email}
-                                    onChange={handleChange("email")}
-                                />
+                                <TextField fullWidth label="Adresse email" type="email" variant="outlined"
+                                           value={registerObject.email} onChange={handleChange("email")}/>
                             </Grid>
 
                             <Grid item xs={12}>
-                                <TextField
-                                    fullWidth
-                                    label="Mot de passe"
-                                    type="password"
-                                    variant="outlined"
-                                    value={registerObject.password}
-                                    onChange={handleChange("password")}
-                                />
+                                <TextField fullWidth label="Mot de passe" type="password" variant="outlined"
+                                           value={registerObject.password} onChange={handleChange("password")}/>
                             </Grid>
 
                             <Grid item xs={12}>
@@ -145,9 +95,7 @@ export const Register = () => {
                                             textTransform: "none",
                                         }}
                                     >
-                                        {registerObject.avatar
-                                            ? registerObject.avatar.name
-                                            : "Choisir une image"}
+                                        {registerObject.avatar ? registerObject.avatar.name : "Choisir une image"}
                                         <input
                                             hidden
                                             type="file"
