@@ -1,3 +1,5 @@
+import {AlertColor} from "@mui/material/Alert/Alert";
+
 export interface BranchsPartialType {
   name_network: string;
   url_network: string;
@@ -41,4 +43,10 @@ export interface UserPathsBranchs {
   path: PathType;
   role: string;
   updatedAt: string;
+}
+
+export interface AlertObject {
+  isVisible: boolean;
+  type: AlertColor;
+  message: string;
 }
