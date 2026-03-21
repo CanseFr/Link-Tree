@@ -1,10 +1,4 @@
-import {genericFetchWithUrl} from "../../../common/request/request.ts";
+import {getRequest} from "../../../common/request/request.ts";
+import {userType} from "./types.ts";
 
-export const getUsers = () => genericFetchWithUrl(`/users`, 'GET')
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error("Error request on url owner");
-    }
-  })
+export const getUsers = () => getRequest<userType[]>(`/users`);

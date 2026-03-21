@@ -28,8 +28,10 @@ export class BranchNetworkService {
   }
 
   updateBranchs(id: number, updatePathProfilDto: UpdatePathProfilDto) {
-    return updatePathProfilDto.branchs.map((b, index) =>
-      this.update(b.id, updatePathProfilDto.branchs[index]),
+    return Promise.all(
+      updatePathProfilDto.branchs.map((b, index) =>
+        this.update(b.id, updatePathProfilDto.branchs[index]),
+      ),
     );
   }
 

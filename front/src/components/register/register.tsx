@@ -20,6 +20,7 @@ import {RegisterObject} from "./type";
 import {register} from "./request.ts";
 import {initRegisterObject} from "./const.ts";
 import {AlertObject} from "../common/types.ts";
+import {getRequestErrorMessage} from "../../common/request/request.ts";
 
 type RegisterErrors = Partial<Record<keyof RegisterObject | "confirmPassword", string>>;
 
@@ -89,18 +90,14 @@ export const Register = () => {
         try {
             await register(registerObject);
             nav("/");
-        } catch (error: any) {
-            const backendMessage =
-                error?.response?.data?.message ||
-                error?.response?.data?.error ||
-                "Une erreur est apparue lors de votre inscription";
-
+        } catch (error) {
             setAlert({
                 isVisible: true,
                 type: "error",
-                message: Array.isArray(backendMessage)
-                    ? backendMessage.join(", ")
-                    : backendMessage,
+                message: getRequestErrorMessage(
+                    error,
+                    "Une erreur est apparue lors de votre inscription",
+                ),
             });
 
             console.error("Erreur inscription :", error);

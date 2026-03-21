@@ -1,5 +1,5 @@
 import { RegisterObject } from "./type";
-import {genericFetchWithBody} from "../../common/request/request.ts";
+import {postRequest} from "../../common/request/request.ts";
 
 export const register = async (registerObject: RegisterObject) => {
     const formData = new FormData();
@@ -13,5 +13,5 @@ export const register = async (registerObject: RegisterObject) => {
         formData.append("avatar", registerObject.avatar);
     }
 
-    return await genericFetchWithBody("/auth/register","POST", formData)
+    return postRequest("/auth/register", formData);
 };
